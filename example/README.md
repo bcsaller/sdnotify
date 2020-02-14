@@ -4,7 +4,7 @@ This example can be tested by running
 $ build.sh
 ```
 
-Then copy the example unit into ~/.config/systemd/user/notify_test.service and edit the path to the dockersd wrapper.
+Then copy the example unit into ~/.config/systemd/user/notify_tester.service and edit the path to the dockersd wrapper.
 
 and try
 
