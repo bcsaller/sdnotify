@@ -5,7 +5,7 @@ Description=showing docker with systemd-notify support
 Type=notify
 NotifyAccess=all
 WatchdogSec=10
-ExecStart=/home/bcsaller/Projects/sdnotify-proxy/dockersd %N notify_tester:latest
+ExecStart=/usr/local/bin/dockersd %N notify_tester:latest
 
 [Install]
 WantedBy=default.target
