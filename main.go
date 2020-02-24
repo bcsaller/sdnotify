@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"log"
+	"strconv"
 	"strings"
 
 	"github.com/okzk/sdnotify"
@@ -20,6 +21,22 @@ func main() {
 
 	case "watchdog":
 		err := sdnotify.Watchdog()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+	case "errno":
+		errno, err := strconv.Atoi(args[1])
+		if err != nil {
+			log.Fatal(err)
+		}
+		err = sdnotify.Errno(errno)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+	case "stopping":
+		err := sdnotify.Stopping()
 		if err != nil {
 			log.Fatal(err)
 		}

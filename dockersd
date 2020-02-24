@@ -1,13 +1,11 @@
 #!/bin/bash
 # Internally the process must use some form of sd_notify(3) or
 # systemd-notify(1) to signal the unit.
-SD_NOTIFY_PROXY=/usr/libexec/sdnotify_proxy
+SD_NOTIFY_PROXY=/usr/libexec/sdnotify-proxy
 SD_SOCK=/tmp/$1.sock
 
 function sdproxy() {
-    $SD_NOTIFY_PROXY $SD_SOCK /usr/bin/docker run --volume=$SD_SOCK:$SD_SOCK \
-    --env=NOTIFY_SOCKET=$SD_SOCK --env=WATCHDOG_USEC=$WATCHDOG_USEC \
-    $@
+    $SD_NOTIFY_PROXY $SD_SOCK /usr/bin/docker run --volume=$SD_SOCK:$SD_SOCK --env NOTIFY_SOCKET=$SD_SOCK --env WATCHDOG_USEC=$WATCHDOG_USEC $@
 }
 
 # Invoke the wrapper as 
